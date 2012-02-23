@@ -1,3 +1,34 @@
+This is the code for iperf-2.0.5 (http://sourceforge.net/projects/iperf/) with
+an update for the patch available from Lucas Nussbaum
+(http://www.loria.fr/~lnussbau/). This version of iperf enables reverse,
+client-initiated TCP iperf tests.
+
+--------------------------------------------------------------------------------
+
+Usage:
+
+*Client behind a NAT*
+
+On the server (Global IP Address):
+
+  iperf -s --reverse
+
+NAT'd client:
+
+  iperf -c _server_ --reverse
+
+*Both client and server have global IP address*
+
+Server:
+
+  iperf -s
+
+Client:
+
+  iperf -c _server_
+
+--------------------------------------------------------------------------------
+
 This is Iperf v2.0.0, a tool for measuring Internet bandwidth performance.
 See the doc directory for more documentation.
 Briefly:
