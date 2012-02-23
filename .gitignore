@@ -3,6 +3,7 @@ Makefile
 autom4te.cache/
 compat/.deps/
 compat/Makefile
+compat/libcompat.a
 config.h
 config.log
 config.status
@@ -12,4 +13,5 @@ include/iperf-int.h
 man/Makefile
 src/.deps/
 src/Makefile
+src/iperf
 stamp-h1
