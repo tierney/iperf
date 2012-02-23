@@ -94,6 +94,11 @@ typedef enum TestMode {
     kTest_Unknown
 } TestMode;
 
+typedef enum DirectionMode {
+    kClientToServer = 0,
+    kServerToClient
+} DirectionMode;
+
 #include "Reporter.h"
 /*
  * The thread_Settings is a structure that holds all
@@ -174,6 +179,7 @@ typedef struct thread_Settings {
 #if defined( HAVE_WIN32_THREAD )
     HANDLE mHandle;
 #endif
+    DirectionMode mDirection;
 } thread_Settings;
 
 /*

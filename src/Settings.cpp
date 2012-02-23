@@ -84,6 +84,7 @@ void Settings_Interpret( char option, const char *optarg, thread_Settings *mExtS
 const struct option long_options[] =
 {
 {"singleclient",     no_argument, NULL, '1'},
+{"reverse",          no_argument, NULL, '2'},
 {"bandwidth",  required_argument, NULL, 'b'},
 {"client",     required_argument, NULL, 'c'},
 {"dualtest",         no_argument, NULL, 'd'},
@@ -129,6 +130,7 @@ const struct option long_options[] =
 const struct option env_options[] =
 {
 {"IPERF_SINGLECLIENT",     no_argument, NULL, '1'},
+{"IPERF_REVERSE",          no_argument, NULL, '2'},
 {"IPERF_BANDWIDTH",  required_argument, NULL, 'b'},
 {"IPERF_CLIENT",     required_argument, NULL, 'c'},
 {"IPERF_DUALTEST",         no_argument, NULL, 'd'},
@@ -169,7 +171,7 @@ const struct option env_options[] =
 
 #define SHORT_OPTIONS()
 
-const char short_options[] = "1b:c:df:hi:l:mn:o:p:rst:uvw:x:y:B:CDF:IL:M:NP:RS:T:UVWZ:";
+const char short_options[] = "12b:c:df:hi:l:mn:o:p:rst:uvw:x:y:B:CDF:IL:M:NP:RS:T:UVWZ:";
 
 /* -------------------------------------------------------------------
  * defaults
@@ -231,6 +233,7 @@ void Settings_Initialize( thread_Settings *main ) {
     main->mTTL          = 1;             // -T,  link-local TTL
     //main->mDomain     = kMode_IPv4;    // -V,
     //main->mSuggestWin = false;         // -W,  Suggest the window size.
+    main->mDirection  = kClientToServer; // -2, client sends data to server
 
 } // end Settings
 
@@ -316,7 +319,12 @@ void Settings_Interpret( char option, const char *optarg, thread_Settings *mExtS
         case '1': // Single Client
             setSingleClient( mExtSettings );
             break;
-        case 'b': // UDP bandwidth
+
+        case '2': // Server sends to client
+	    mExtSettings->mDirection = kServerToClient;
+            break;
+
+	case 'b': // UDP bandwidth
             if ( !isUDP( mExtSettings ) ) {
                 fprintf( stderr, warn_implied_udp, option );
             }
@@ -723,6 +731,7 @@ void Settings_GenerateListenerSettings( thread_Settings *client, thread_Settings
         (*listener)->mOutputFileName = NULL;
         (*listener)->mMode       = kTest_Normal;
         (*listener)->mThreadMode = kMode_Listener;
+        (*listener)->mDirection = client->mDirection;
         if ( client->mHost != NULL ) {
             (*listener)->mHost = new char[strlen( client->mHost ) + 1];
             strcpy( (*listener)->mHost, client->mHost );

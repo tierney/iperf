@@ -71,10 +71,6 @@ public:
     // accepts connection and receives data
     void Run( void );
 
-    void write_UDP_AckFIN( );
-
-    static void Sig_Int( int inSigno );
-
 private:
     thread_Settings *mSettings;
     char* mBuf;

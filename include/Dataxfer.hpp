@@ -43,42 +43,29 @@
  * University of Illinois at Urbana-Champaign 
  * http://www.ncsa.uiuc.edu
  * ________________________________________________________________ 
- * Client.hpp
- * by Mark Gates <mgates@nlanr.net>
+ *
+ * dataxfer.h
+ * by Lucas Nussbaum <lucas.nussbaum@ens-lyon.fr>
  * -------------------------------------------------------------------
- * A client thread initiates a connect to the server and handles
- * sending and receiving data, then closes the socket.
- * ------------------------------------------------------------------- 
- */
+ * Functions to send or receive data. Used by both client and server,
+ * depending on their role during the experiment.
+ * ------------------------------------------------------------------- */
 
-#ifndef CLIENT_H
-#define CLIENT_H
+#ifndef DATAXFER_H
+#define DATAXFER_H
 
-#include "Settings.hpp"
+#include "headers.h"
 #include "Timestamp.hpp"
+#include "Thread.h"
 
-/* ------------------------------------------------------------------- */
-class Client {
-public:
-    // stores server hostname, port, UDP/TCP mode, and UDP rate
-    Client( thread_Settings *inSettings );
+void data_sendtcp(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime);
 
-    // destroy the client object
-    ~Client();
+void data_send(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime);
 
-    // connects and sends data
-    void Run( void );
+void data_recv(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime);
 
-    void InitiateServer();
+void write_UDP_FIN(thread_Settings * mSettings, char * mBuf);
 
-    // client connect
-    void Connect( );
+void write_UDP_AckFIN(thread_Settings * mSettings, char * mBuf);
 
-protected:
-    thread_Settings *mSettings;
-    char* mBuf;
-    Timestamp mEndTime;
-
-}; // end class Client
-
-#endif // CLIENT_H
+#endif

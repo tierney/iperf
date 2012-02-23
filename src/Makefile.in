@@ -51,7 +51,7 @@ CONFIG_CLEAN_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 binPROGRAMS_INSTALL = $(INSTALL_PROGRAM)
 PROGRAMS = $(bin_PROGRAMS)
-am_iperf_OBJECTS = Client.$(OBJEXT) Extractor.$(OBJEXT) \
+am_iperf_OBJECTS = Client.$(OBJEXT) Dataxfer.$(OBJEXT) Extractor.$(OBJEXT) \
 	Launch.$(OBJEXT) List.$(OBJEXT) Listener.$(OBJEXT) \
 	Locale.$(OBJEXT) PerfSocket.$(OBJEXT) ReportCSV.$(OBJEXT) \
 	ReportDefault.$(OBJEXT) Reporter.$(OBJEXT) Server.$(OBJEXT) \
@@ -196,6 +196,7 @@ AM_CFLAGS = -Wall
 iperf_LDFLAGS = @CFLAGS@ @PTHREAD_CFLAGS@ @WEB100_CFLAGS@ @DEFS@
 iperf_SOURCES = \
 		Client.cpp \
+		Dataxfer.cpp \
 		Extractor.c \
 		Launch.cpp \
 		List.cpp \
@@ -273,7 +274,7 @@ uninstall-binPROGRAMS:
 
 clean-binPROGRAMS:
 	-test -z "$(bin_PROGRAMS)" || rm -f $(bin_PROGRAMS)
-iperf$(EXEEXT): $(iperf_OBJECTS) $(iperf_DEPENDENCIES) 
+iperf$(EXEEXT): $(iperf_OBJECTS) $(iperf_DEPENDENCIES)
 	@rm -f iperf$(EXEEXT)
 	$(CXXLINK) $(iperf_LDFLAGS) $(iperf_OBJECTS) $(iperf_LDADD) $(LIBS)
 
@@ -284,6 +285,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Client.Po@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Dataxfer.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Extractor.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/Launch.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@./$(DEPDIR)/List.Po@am__quote@

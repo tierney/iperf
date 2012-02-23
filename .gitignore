@@ -1,0 +1,15 @@
+*.o
+Makefile
+autom4te.cache/
+compat/.deps/
+compat/Makefile
+config.h
+config.log
+config.status
+doc/Makefile
+include/Makefile
+include/iperf-int.h
+man/Makefile
+src/.deps/
+src/Makefile
+stamp-h1

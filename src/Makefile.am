@@ -34,6 +34,7 @@ iperf_SOURCES = \
 		service.c \
 		sockets.c \
 		stdio.c \
-		tcp_window_size.c
+		tcp_window_size.c \
+		Dataxfer.cpp
 
 iperf_LDADD = $(LIBCOMPAT_LDADDS)
