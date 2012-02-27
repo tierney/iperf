@@ -1,6 +1,7 @@
-This version of iperf enables reverse, client-initiated TCP iperf tests. This is
-the code for iperf-2.0.5 (http://sourceforge.net/projects/iperf/) with an update
-for the patch available from Lucas Nussbaum (http://www.loria.fr/~lnussbau/).
+This version of iperf enables reverse, client-initiated TCP iperf tests, which
+are useful if your client is behind a NAT. This is the code for iperf-2.0.5
+(http://sourceforge.net/projects/iperf/) with an update for the patch available
+from Lucas Nussbaum (http://www.loria.fr/~lnussbau/).
 
 --------------------------------------------------------------------------------
 
