@@ -1,4 +1,5 @@
 *.o
+.project
 Makefile
 autom4te.cache/
 compat/.deps/
