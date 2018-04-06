@@ -65,7 +65,7 @@ const int    kBytes_to_Bits = 8;
 void data_sendtcp(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime)
 {
   Timestamp lastPacketTime;
-  long currLen = 0;
+  unsigned long currLen = 0;
   struct itimerval it;
   max_size_t totLen = 0;
 
@@ -75,7 +75,6 @@ void data_sendtcp(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime)
 
   // Indicates if the stream is readable
   bool canRead = true, mMode_Time = isModeTime( mSettings );
-
   ReportStruct *reportstruct = NULL;
 
   // InitReport handles Barrier for multiple Streams
@@ -119,7 +118,12 @@ void data_sendtcp(thread_Settings * mSettings, char * mBuf, Timestamp mEndTime)
     }
 
     if ( !mMode_Time ) {
-      mSettings->mAmount -= currLen;
+      if (mSettings->mAmount >= currLen) {
+            mSettings->mAmount -= currLen;
+      } else {
+          mSettings->mAmount = 0;
+      }
+     
     }
 
   } while ( ! (sInterupted  ||
