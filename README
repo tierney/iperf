@@ -1,50 +1,156 @@
-This version of iperf enables reverse, client-initiated TCP iperf tests, which
-are useful if your client is behind a NAT. This is the code for iperf-2.0.5
-(http://sourceforge.net/projects/iperf/) with an update for the patch available
-from Lucas Nussbaum (http://www.loria.fr/~lnussbau/).
+# iperf Reverse-NAT Legacy Fork (iperf2-era)
 
---------------------------------------------------------------------------------
+## 1. Project status
 
-Usage:
+This repository is a **historical iperf2-era fork** preserved for archaeology, reproducibility, and behavioral comparison.
 
-*Client behind a NAT*
+It is not intended to become a broad rewrite of iperf2 or iperf3.
 
-On the server (Global IP Address):
+## 2. What this fork is
 
-  iperf -s --reverse
+This tree is based on iperf 2.0.5-era code with a patch that adds reverse TCP behavior for NAT/firewall-constrained clients:
 
-NAT'd client:
+- public server: `iperf -s --reverse`
+- NAT'd client: `iperf -c <server> --reverse`
 
-  iperf -c _server_ --reverse
+The reverse patch is centered around:
 
-*Both client and server have global IP address*
+- `--reverse` / `-2` option handling in `src/Settings.cpp`
+- `DirectionMode` in `include/Settings.hpp`
+- sender/receiver role dispatch in `src/Client.cpp` and `src/Server.cpp`
+- shared transfer helpers in `src/Dataxfer.cpp`
 
-Server:
+## 3. Why NAT'd reverse testing mattered
 
-  iperf -s
+The historical use case was a client that could initiate outbound connections but could not accept inbound test connections.
+This fork's reverse mode flips data direction over the established path.
 
-Client:
+## 4. Quick start
 
-  iperf -c _server_
+Standard TCP test:
 
---------------------------------------------------------------------------------
+- server: `iperf -s`
+- client: `iperf -c <server>`
 
-This is Iperf v2.0.0, a tool for measuring Internet bandwidth performance.
-See the doc directory for more documentation.
-Briefly:
+Legacy reverse test:
 
-  ./configure      -- configure for your machine
-  make             -- compile Iperf
-  make install     -- install Iperf, if desired
+- server: `iperf -s --reverse`
+- client: `iperf -c <server> --reverse`
 
-  iperf -s               (on machine "foo.bar.edu")
-  iperf -c foo.bar.edu   (on some other machine)
-  iperf -h               (for help screen)
-  iperf -v               (for version information)
+## 5. Build from source
 
-Copyright 1999, 2000, 2001, 2002, 2003, 2004
-The Board of Trustees of the University of Illinois
-All rights reserved
-See UI License (doc/ui_license.html) for complete details.
+From repo root:
 
-$Id: README,v 1.1.1.1 2004/05/18 01:50:44 kgibbs Exp $
+```sh
+./configure
+make
+```
+
+If you need to regenerate autotools files:
+
+```sh
+./autogen.sh
+./configure
+make
+```
+
+## 6. Usage examples
+
+See `man/iperf.1` and `doc/index.html` for legacy CLI details.
+
+## 7. Behavioral notes
+
+- This is an iperf2-family codebase and protocol.
+- iperf2 and iperf3 are separate and not protocol-compatible.
+- Reverse behavior in this fork is implemented as endpoint role selection (`mDirection`), not an iperf3 protocol port.
+
+## 8. Compatibility with iperf2 / iperf3
+
+Modern upstreams now provide reverse mode:
+
+- current iperf2 supports `-R/--reverse`
+- current iperf3 supports `-R/--reverse`
+
+See `docs/upstream-comparison.md` and `docs/iperf3-strategy.md`.
+
+## 9. Equivalent stock iperf3 commands
+
+If your requirement is client-initiated reverse TCP measurement through NAT/firewall constraints:
+
+- server: `iperf3 -s`
+- client: `iperf3 -c <server> -R`
+
+## 10. Tests
+
+A parameterized behavior matrix is provided in:
+
+- `tests/reverse-cases.tsv`
+- `tests/reverse-matrix.sh`
+
+Run:
+
+```sh
+./tests/reverse-matrix.sh
+```
+
+`make check` runs the legacy portion of this matrix (`RUN_IPERF3=0`) so repository-local checks stay self-contained.
+
+### Installing iperf3 for comparison
+
+macOS:
+
+```sh
+brew install iperf3
+```
+
+Ubuntu/Debian:
+
+```sh
+sudo apt-get update
+sudo apt-get install -y iperf3
+```
+
+Fedora/RHEL:
+
+```sh
+sudo dnf install -y iperf3
+```
+
+Verify:
+
+```sh
+iperf3 --version
+```
+
+Run only iperf3 matrix:
+
+```sh
+RUN_LEGACY=0 ./tests/reverse-matrix.sh
+```
+
+Run only legacy matrix:
+
+```sh
+RUN_IPERF3=0 ./tests/reverse-matrix.sh
+```
+
+Debug tips:
+
+- keep logs after run: `KEEP_TMP=1 ./tests/reverse-matrix.sh`
+- fail fast if binaries are missing: `FAIL_ON_MISSING_BIN=1 ./tests/reverse-matrix.sh`
+
+## 11. Limitations
+
+- Legacy build system/tooling is old and being modernized incrementally.
+- Timing/bandwidth output is workload-dependent and should not be overfit in tests.
+- Legacy docs include historical version strings and references.
+
+## 12. Historical notes
+
+This repository preserves an iperf2-era patch lineage and historical usage pattern for reverse testing.
+See `docs/modernization.md` for archaeology and project direction.
+
+## 13. License
+
+- `COPYING`
+- `doc/ui_license.html`

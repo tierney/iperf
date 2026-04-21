@@ -71,6 +71,13 @@
     #endif
 #endif /* HAVE_CONFIG_H */
 
+/* Some older configure templates define bool as a macro for C.
+ * That breaks modern C++ headers; keep it for C translation units
+ * but drop it when compiling as C++. */
+#if defined(__cplusplus) && defined(bool)
+    #undef bool
+#endif
+
 /* turn off assert debugging */
 #define NDEBUG
 
@@ -194,7 +201,6 @@ typedef uint64_t max_size_t;
 #endif // SHUT_RD
 
 #endif /* HEADERS_H */
-
 
 
 

@@ -1,0 +1,8 @@
+# suite|case_name|server_args|client_args|expect_exit|client_expect_regex
+legacy|tcp_normal|||0|
+legacy|tcp_reverse_both|--reverse|--reverse|0|
+legacy|tcp_dualtest||-d|0|
+legacy|tcp_tradeoff||-r|0|
+iperf3|tcp_normal|||0|"reverse"[[:space:]]*:[[:space:]]*0
+iperf3|tcp_reverse_client||-R|0|"reverse"[[:space:]]*:[[:space:]]*1
+iperf3|tcp_bidir||--bidir|0|

@@ -78,7 +78,7 @@ void reporter_printstats( Transfer_Info *stats ) {
     if ( stats->mUDP != (char)kMode_Server ) {
         // TCP Reporting
         if( !header_printed ) {
-            printf( report_bw_header);
+            printf( "%s", report_bw_header);
             header_printed = 1;
         }
         printf( report_bw_format, stats->transferID, 
@@ -87,7 +87,7 @@ void reporter_printstats( Transfer_Info *stats ) {
     } else {
         // UDP Reporting
         if( !header_printed ) {
-            printf( report_bw_jitter_loss_header);
+            printf( "%s", report_bw_jitter_loss_header);
             header_printed = 1;
         }
         printf( report_bw_jitter_loss_format, stats->transferID, 
@@ -159,7 +159,7 @@ void reporter_reportsettings( ReporterData *data ) {
                   (data->mThreadMode == kMode_Listener ? 0 : 1) );
     win_requested = data->mTCPWin;
 
-    printf( separator_line );
+    printf( "%s", separator_line );
     if ( data->mThreadMode == kMode_Listener ) {
         printf( server_port,
                 (isUDP( data ) ? "UDP" : "TCP"), 
@@ -198,7 +198,7 @@ void reporter_reportsettings( ReporterData *data ) {
         printf( warn_window_requested, buffer );
     }
     printf( "\n" );
-    printf( separator_line );
+    printf( "%s", separator_line );
 }
 
 /*
@@ -286,7 +286,7 @@ void reporter_reportMSS( int inMSS, thread_Settings *inSettings ) {
         } else if ( checkMSS_MTU( inMSS, 576 ) ) {
             net = "minimum";
             mtu = 576;
-            printf( warn_no_pathmtu );
+            printf( "%s", warn_no_pathmtu );
         } else {
             mtu = inMSS + 40;
             net = "unknown interface";

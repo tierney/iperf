@@ -896,7 +896,7 @@ void PrintMSS( ReporterData *stats ) {
         } else if ( checkMSS_MTU( inMSS, 576 ) ) {
             net = "minimum";
             mtu = 576;
-            printf( warn_no_pathmtu );
+            printf( "%s", warn_no_pathmtu );
         } else {
             mtu = inMSS + 40;
             net = "unknown interface";

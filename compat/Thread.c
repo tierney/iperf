@@ -381,7 +381,7 @@ int thread_release_nonterm( int interrupt ) {
     Condition_Lock( thread_sNum_cond );
     thread_sNum -= nonterminating_num;
     if ( thread_sNum > 1 && nonterminating_num > 0 && interrupt != 0 ) {
-        fprintf( stderr, wait_server_threads );
+        fprintf( stderr, "%s", wait_server_threads );
     }
     nonterminating_num = 0;
     Condition_Signal( &thread_sNum_cond );
