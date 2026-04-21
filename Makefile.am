@@ -11,7 +11,7 @@ AM_FLAGS = -Wall
 
 EXTRA_DIST = tests/reverse-matrix.sh tests/reverse-cases.tsv docs/iperf3-strategy.md \
              docs/archaeology/repo_map.md docs/archaeology/build_system_map.md docs/archaeology/reverse_patch_map.md \
-             docs/audit_notes.md docs/nat-simulation-strategy.md
+             docs/audit_notes.md docs/nat-simulation-strategy.md README.md
 
 check-local:
 	LEGACY_IPERF_BIN=$(top_builddir)/src/iperf \
