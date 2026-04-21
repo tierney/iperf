@@ -152,5 +152,12 @@ See `docs/modernization.md` for archaeology and project direction.
 
 ## 13. License
 
-- `COPYING`
-- `doc/ui_license.html`
+- This software is based on **Iperf**, copyright (c) 1999-2003 The Board of Trustees of the University of Illinois.
+- See `COPYING` and `doc/ui_license.html` for the original University of Illinois / NCSA Open Source License.
+- Subsequent modifications for the reverse-NAT patch are preserved under the same terms.
+
+## 14. Attribution
+
+- **Original Authors**: Mark Gates, Ajay Tirumala, Kevin Gibbs, et al. (NLANR/DAST).
+- **Reverse Patch**: Lucas Nussbaum (lucas.nussbaum@ens-lyon.fr).
+- **Modernization**: Repository archaeology and build hardening (2026).

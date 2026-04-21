@@ -1,0 +1,74 @@
+/Library/Developer/CommandLineTools/usr/bin/make  all-recursive
+Making all in compat
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Thread.o -MD -MP -MF ".deps/Thread.Tpo" -c -o Thread.o Thread.c; \
+	then mv -f ".deps/Thread.Tpo" ".deps/Thread.Po"; else rm -f ".deps/Thread.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT error.o -MD -MP -MF ".deps/error.Tpo" -c -o error.o error.c; \
+	then mv -f ".deps/error.Tpo" ".deps/error.Po"; else rm -f ".deps/error.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT delay.o -MD -MP -MF ".deps/delay.Tpo" -c -o delay.o delay.cpp; \
+	then mv -f ".deps/delay.Tpo" ".deps/delay.Po"; else rm -f ".deps/delay.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT gettimeofday.o -MD -MP -MF ".deps/gettimeofday.Tpo" -c -o gettimeofday.o gettimeofday.c; \
+	then mv -f ".deps/gettimeofday.Tpo" ".deps/gettimeofday.Po"; else rm -f ".deps/gettimeofday.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT inet_ntop.o -MD -MP -MF ".deps/inet_ntop.Tpo" -c -o inet_ntop.o inet_ntop.c; \
+	then mv -f ".deps/inet_ntop.Tpo" ".deps/inet_ntop.Po"; else rm -f ".deps/inet_ntop.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT inet_pton.o -MD -MP -MF ".deps/inet_pton.Tpo" -c -o inet_pton.o inet_pton.c; \
+	then mv -f ".deps/inet_pton.Tpo" ".deps/inet_pton.Po"; else rm -f ".deps/inet_pton.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT signal.o -MD -MP -MF ".deps/signal.Tpo" -c -o signal.o signal.c; \
+	then mv -f ".deps/signal.Tpo" ".deps/signal.Po"; else rm -f ".deps/signal.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT snprintf.o -MD -MP -MF ".deps/snprintf.Tpo" -c -o snprintf.o snprintf.c; \
+	then mv -f ".deps/snprintf.Tpo" ".deps/snprintf.Po"; else rm -f ".deps/snprintf.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT string.o -MD -MP -MF ".deps/string.Tpo" -c -o string.o string.c; \
+	then mv -f ".deps/string.Tpo" ".deps/string.Po"; else rm -f ".deps/string.Tpo"; exit 1; fi
+rm -f libcompat.a
+ar cru libcompat.a Thread.o error.o delay.o gettimeofday.o inet_ntop.o inet_pton.o signal.o snprintf.o string.o 
+ranlib libcompat.a
+Making all in doc
+make[2]: Nothing to be done for `all'.
+Making all in include
+make[2]: Nothing to be done for `all'.
+Making all in src
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Client.o -MD -MP -MF ".deps/Client.Tpo" -c -o Client.o Client.cpp; \
+	then mv -f ".deps/Client.Tpo" ".deps/Client.Po"; else rm -f ".deps/Client.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Dataxfer.o -MD -MP -MF ".deps/Dataxfer.Tpo" -c -o Dataxfer.o Dataxfer.cpp; \
+	then mv -f ".deps/Dataxfer.Tpo" ".deps/Dataxfer.Po"; else rm -f ".deps/Dataxfer.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Extractor.o -MD -MP -MF ".deps/Extractor.Tpo" -c -o Extractor.o Extractor.c; \
+	then mv -f ".deps/Extractor.Tpo" ".deps/Extractor.Po"; else rm -f ".deps/Extractor.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Launch.o -MD -MP -MF ".deps/Launch.Tpo" -c -o Launch.o Launch.cpp; \
+	then mv -f ".deps/Launch.Tpo" ".deps/Launch.Po"; else rm -f ".deps/Launch.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT List.o -MD -MP -MF ".deps/List.Tpo" -c -o List.o List.cpp; \
+	then mv -f ".deps/List.Tpo" ".deps/List.Po"; else rm -f ".deps/List.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Listener.o -MD -MP -MF ".deps/Listener.Tpo" -c -o Listener.o Listener.cpp; \
+	then mv -f ".deps/Listener.Tpo" ".deps/Listener.Po"; else rm -f ".deps/Listener.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Locale.o -MD -MP -MF ".deps/Locale.Tpo" -c -o Locale.o Locale.c; \
+	then mv -f ".deps/Locale.Tpo" ".deps/Locale.Po"; else rm -f ".deps/Locale.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT PerfSocket.o -MD -MP -MF ".deps/PerfSocket.Tpo" -c -o PerfSocket.o PerfSocket.cpp; \
+	then mv -f ".deps/PerfSocket.Tpo" ".deps/PerfSocket.Po"; else rm -f ".deps/PerfSocket.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT ReportCSV.o -MD -MP -MF ".deps/ReportCSV.Tpo" -c -o ReportCSV.o ReportCSV.c; \
+	then mv -f ".deps/ReportCSV.Tpo" ".deps/ReportCSV.Po"; else rm -f ".deps/ReportCSV.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT ReportDefault.o -MD -MP -MF ".deps/ReportDefault.Tpo" -c -o ReportDefault.o ReportDefault.c; \
+	then mv -f ".deps/ReportDefault.Tpo" ".deps/ReportDefault.Po"; else rm -f ".deps/ReportDefault.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Reporter.o -MD -MP -MF ".deps/Reporter.Tpo" -c -o Reporter.o Reporter.c; \
+	then mv -f ".deps/Reporter.Tpo" ".deps/Reporter.Po"; else rm -f ".deps/Reporter.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Server.o -MD -MP -MF ".deps/Server.Tpo" -c -o Server.o Server.cpp; \
+	then mv -f ".deps/Server.Tpo" ".deps/Server.Po"; else rm -f ".deps/Server.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT Settings.o -MD -MP -MF ".deps/Settings.Tpo" -c -o Settings.o Settings.cpp; \
+	then mv -f ".deps/Settings.Tpo" ".deps/Settings.Po"; else rm -f ".deps/Settings.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT SocketAddr.o -MD -MP -MF ".deps/SocketAddr.Tpo" -c -o SocketAddr.o SocketAddr.c; \
+	then mv -f ".deps/SocketAddr.Tpo" ".deps/SocketAddr.Po"; else rm -f ".deps/SocketAddr.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT gnu_getopt.o -MD -MP -MF ".deps/gnu_getopt.Tpo" -c -o gnu_getopt.o gnu_getopt.c; \
+	then mv -f ".deps/gnu_getopt.Tpo" ".deps/gnu_getopt.Po"; else rm -f ".deps/gnu_getopt.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT gnu_getopt_long.o -MD -MP -MF ".deps/gnu_getopt_long.Tpo" -c -o gnu_getopt_long.o gnu_getopt_long.c; \
+	then mv -f ".deps/gnu_getopt_long.Tpo" ".deps/gnu_getopt_long.Po"; else rm -f ".deps/gnu_getopt_long.Tpo"; exit 1; fi
+if g++ -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT main.o -MD -MP -MF ".deps/main.Tpo" -c -o main.o main.cpp; \
+	then mv -f ".deps/main.Tpo" ".deps/main.Po"; else rm -f ".deps/main.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT service.o -MD -MP -MF ".deps/service.Tpo" -c -o service.o service.c; \
+	then mv -f ".deps/service.Tpo" ".deps/service.Po"; else rm -f ".deps/service.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT sockets.o -MD -MP -MF ".deps/sockets.Tpo" -c -o sockets.o sockets.c; \
+	then mv -f ".deps/sockets.Tpo" ".deps/sockets.Po"; else rm -f ".deps/sockets.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT stdio.o -MD -MP -MF ".deps/stdio.Tpo" -c -o stdio.o stdio.c; \
+	then mv -f ".deps/stdio.Tpo" ".deps/stdio.Po"; else rm -f ".deps/stdio.Tpo"; exit 1; fi
+if gcc -DHAVE_CONFIG_H -I. -I. -I..  -I../include -I../include  -Wall -O2  -MT tcp_window_size.o -MD -MP -MF ".deps/tcp_window_size.Tpo" -c -o tcp_window_size.o tcp_window_size.c; \
+	then mv -f ".deps/tcp_window_size.Tpo" ".deps/tcp_window_size.Po"; else rm -f ".deps/tcp_window_size.Tpo"; exit 1; fi
+g++ -Wall -O2    -o iperf -O2  -D_THREAD_SAFE   -DHAVE_CONFIG_H Client.o Dataxfer.o Extractor.o Launch.o List.o Listener.o Locale.o PerfSocket.o ReportCSV.o ReportDefault.o Reporter.o Server.o Settings.o SocketAddr.o gnu_getopt.o gnu_getopt_long.o main.o service.o sockets.o stdio.o tcp_window_size.o ../compat/libcompat.a 
+Making all in man
+make[2]: Nothing to be done for `all'.
+make[2]: Nothing to be done for `all-am'.
